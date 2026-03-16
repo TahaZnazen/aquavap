@@ -1,0 +1,35 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+import { services } from "../data/services";
+---
+
+<section id="services" class="py-24 bg-background">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span
+        class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-semibold text-sm rounded-full mb-4"
+      >
+        Nos Services
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text-primary mb-4">
+        Des solutions pour
+        <span class="text-primary">chaque espace</span>
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Nettoyage professionnel à la vapeur à domicile. Sans produits chimiques, 100% écologique et efficace.
+      </p>
+    </div>
+
+    <!-- Service cards grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {services.map((service) => (
+        <ServiceCard
+          title={service.title}
+          description={service.description}
+          image={service.image}
+        />
+      ))}
+    </div>
+  </div>
+</section>

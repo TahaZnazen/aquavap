@@ -1,0 +1,45 @@
+---
+import BeforeAfterSlider from "./BeforeAfterSlider.astro";
+import CTAButton from "./CTAButton.astro";
+
+const galleryItems = [
+  { title: "Canapé — Nettoyage complet", before: "before1", after: "after1" },
+  { title: "Tapis traditionnel",          before: "before3", after: "after3" },
+  { title: "Miroirs & Vitres",            before: "before2", after: "after2" },
+  { title: "Voiture — Intérieur complet", before: "before4", after: "after4" },
+];
+---
+
+<section id="gallery" class="py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span
+        class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-semibold text-sm rounded-full mb-4"
+      >
+        Avant / Après
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text-primary mb-4">
+        Voyez la
+        <span class="text-primary">différence</span>
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        Glissez le curseur pour voir la transformation. Des résultats visibles dès la première intervention.
+      </p>
+    </div>
+
+    <!-- Sliders — one per row -->
+    <div class="space-y-12 mb-12 max-w-4xl mx-auto">
+      {galleryItems.map((item) => (
+        <BeforeAfterSlider title={item.title} before={item.before} after={item.after} />
+      ))}
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center">
+      <CTAButton href="#booking" variant="primary" size="lg">
+        Demander un devis gratuit
+      </CTAButton>
+    </div>
+  </div>
+</section>

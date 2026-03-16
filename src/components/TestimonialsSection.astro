@@ -1,0 +1,36 @@
+---
+import TestimonialCard from "./TestimonialCard.astro";
+import { testimonials } from "../data/testimonials";
+---
+
+<section id="testimonials" class="py-24 bg-background">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-16">
+      <span
+        class="inline-block px-4 py-1.5 bg-primary/10 text-primary font-semibold text-sm rounded-full mb-4"
+      >
+        Témoignages
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-text-primary mb-4">
+        Ce que nos clients
+        <span class="text-primary">disent</span>
+      </h2>
+      <p class="text-text-secondary text-lg max-w-2xl mx-auto">
+        La satisfaction de nos clients est notre meilleure publicité.
+      </p>
+    </div>
+
+    <!-- Testimonials grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {testimonials.map((t) => (
+        <TestimonialCard
+          name={t.name}
+          text={t.text}
+          rating={t.rating}
+          service={t.service}
+        />
+      ))}
+    </div>
+  </div>
+</section>

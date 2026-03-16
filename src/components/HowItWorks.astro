@@ -1,0 +1,97 @@
+---
+import CTAButton from "./CTAButton.astro";
+
+const steps = [
+  {
+    number: "1",
+    title: "Réservez",
+    description: "Contactez-nous via WhatsApp ou téléphone . Choisissez votre créneau.",
+    icon: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+  },
+  {
+    number: "2",
+    title: "On arrive",
+    description: "Notre équipe se déplace chez vous avec tout le matériel professionnel nécessaire.",
+    icon: "M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z M15 11a3 3 0 11-6 0 3 3 0 016 0z",
+  },
+  {
+    number: "3",
+    title: "Résultat garanti",
+    description: "Profitez d'espaces propres, désinfectés et comme neufs. Satisfaction garantie.",
+    icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z",
+  },
+];
+---
+
+<section id="how-it-works" class="py-24 bg-secondary text-white relative overflow-hidden">
+  <!-- Decorative blurs -->
+  <div class="absolute top-0 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
+  <div class="absolute bottom-0 right-1/4 w-72 h-72 bg-primary-light/5 rounded-full blur-3xl"></div>
+
+  <div class="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section header -->
+    <div class="text-center mb-20">
+      <span
+        class="inline-block px-4 py-1.5 bg-white/10 text-primary-light font-semibold text-sm rounded-full mb-4"
+      >
+        Simple & Rapide
+      </span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
+        Comment ça
+        <span class="text-primary-light">marche</span> ?
+      </h2>
+      <p class="text-white/70 text-lg max-w-2xl mx-auto">
+        En 3 étapes simples, retrouvez des espaces impeccables.
+      </p>
+    </div>
+
+    <!-- Steps - vertical timeline on mobile, horizontal on desktop -->
+    <div class="relative">
+      <!-- Horizontal connector line (desktop) -->
+      <div class="hidden md:block absolute top-10 left-[15%] right-[15%] h-px bg-gradient-to-r from-primary-light/0 via-primary-light/30 to-primary-light/0"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+        {steps.map((step, i) => (
+          <div class="relative flex md:flex-col items-start md:items-center text-left md:text-center gap-5 md:gap-0 group">
+            {/* Number circle */}
+            <div class="relative flex-shrink-0">
+              <div class="w-20 h-20 rounded-full bg-primary flex items-center justify-center shadow-lg shadow-primary/30 group-hover:scale-110 transition-transform duration-300">
+                <span class="text-white font-extrabold text-2xl">{step.number}</span>
+              </div>
+              {/* Pulse ring */}
+              <div class="absolute inset-0 rounded-full border-2 border-primary-light/30 animate-ping-slow"></div>
+            </div>
+
+            {/* Vertical connector (mobile) */}
+            {i < steps.length - 1 && (
+              <div class="md:hidden absolute left-10 top-20 w-px h-16 bg-gradient-to-b from-primary-light/40 to-transparent -translate-x-1/2"></div>
+            )}
+
+            {/* Content */}
+            <div class="md:mt-8">
+              <h3 class="text-xl font-bold mb-2">{step.title}</h3>
+              <p class="text-white/60 leading-relaxed max-w-xs">{step.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="text-center mt-16">
+      <CTAButton href="#booking" variant="primary" size="lg">
+        Réserver maintenant
+      </CTAButton>
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes pingSlow {
+    0% { transform: scale(1); opacity: 0.5; }
+    75%, 100% { transform: scale(1.4); opacity: 0; }
+  }
+  .animate-ping-slow {
+    animation: pingSlow 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+</style>
