@@ -220,25 +220,39 @@ const whatsappUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURICompon
   </div>
 </section>
 
-<script define:vars={{ whatsapp: siteConfig.whatsapp }}>
-  document.getElementById('devis-form')?.addEventListener('submit', (e) => {
+<script>
+  const VAL_URL = "https://tahaznazen--1f69549c237511f1867442dde27851f2.web.val.run";
+
+  document.getElementById('devis-form')?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
+    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+
     const name    = (form.querySelector('#name') as HTMLInputElement).value.trim();
     const phone   = (form.querySelector('#phone') as HTMLInputElement).value.trim();
     const service = (form.querySelector('#service') as HTMLSelectElement).value;
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value.trim();
 
-    const text = [
-      `Bonjour Aquavap ! Je souhaite un devis gratuit.`,
-      ``,
-      `👤 Nom : ${name}`,
-      `📞 Téléphone : ${phone}`,
-      service ? `🧹 Service : ${service}` : '',
-      message ? `💬 Message : ${message}` : '',
-    ].filter(Boolean).join('\n');
+    btn.disabled = true;
+    btn.textContent = "Envoi en cours...";
 
-    const url = `https://wa.me/${whatsapp}?text=${encodeURIComponent(text)}`;
-    window.open(url, '_blank');
+    try {
+      const res = await fetch(VAL_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, phone, service, message }),
+      });
+
+      if (res.ok) {
+        btn.textContent = "✅ Demande envoyée !";
+        btn.classList.replace("bg-primary", "bg-green-500");
+        form.reset();
+      } else {
+        throw new Error("Erreur serveur");
+      }
+    } catch {
+      btn.textContent = "❌ Erreur, réessayez";
+      btn.disabled = false;
+    }
   });
 </script>
