@@ -5,11 +5,28 @@ export interface Service {
 }
 
 export const services: Service[] = [
-  // — B2B first —
+  {
+    title: "Canapé, Salon & Tapis",
+    description:
+      "Nettoyage vapeur en profondeur de vos canapés, fauteuils, chaises de salon et tapis : tissu, cuir, velours et microfibre. Élimine poussière, saletés, taches tenaces, odeurs et allergènes.",
+    image: "/images/services/card6.png",
+  },
+  {
+    title: "Rideaux & Matelas",
+    description:
+      "Nettoyage et désinfection sur place de vos rideaux, voilages et matelas, sans démontage ni déplacement. Élimine poussière, saletés, acariens et bactéries pour un sommeil plus sain.",
+    image: "/images/services/card5.png",
+  },
+  {
+    title: "Moquette",
+    description:
+      "Nettoyage en profondeur de vos moquettes murales et sol, couloirs et escaliers moquettés. Élimine poussière, saletés et taches incrustées. Couleurs ravivées, fibres restaurées.",
+    image: "/images/services/card7.png",
+  },
   {
     title: "Entreprise & Bureaux",
     description:
-      "Solutions professionnelles pour bureaux, espaces commerciaux et hôtels. Élimine poussière et saletés. Interventions rapides et efficaces.",
+      "Nettoyage professionnel pour bureaux, open spaces, salles de réunion, hôtels et espaces commerciaux : sièges, chaises, moquettes, cloisons et sols. Élimine poussière et saletés. Interventions rapides, sans perturbation de votre activité.",
     image: "/images/services/card1.png",
   },
   {
@@ -21,39 +38,13 @@ export const services: Service[] = [
   {
     title: "Mosquée",
     description:
-      "Nettoyage approfondi des espaces de prière, tapis et sols. Élimine poussière et saletés. Hygiène irréprochable pour vos lieux de culte.",
+      "Nettoyage approfondi des espaces de prière : tapis de prière, moquettes, sols et allées. Élimine poussière, saletés et impuretés avec respect. Hygiène irréprochable pour vos lieux de culte.",
     image: "/images/services/card4.png",
   },
-  // — Résidentiel —
-  {
-    title: "Nettoyage Vapeur",
-    description:
-      "Désinfection en profondeur à la vapeur haute pression. Élimine poussière, saletés et 99,9% des bactéries sans produits chimiques.",
-    image: "/images/services/card5.png",
-  },
-  {
-    title: "Canapés & Salons",
-    description:
-      "Redonner vie à vos canapés, fauteuils et salons. Élimine poussière, saletés, taches, odeurs et allergènes.",
-    image: "/images/services/card6.png",
-  },
-  {
-    title: "Tapis & Moquettes",
-    description:
-      "Nettoyage en profondeur de vos tapis et moquettes. Élimine poussière et saletés. Couleurs ravivées, fibres restaurées.",
-    image: "/images/services/card7.png",
-  },
-  {
-    title: "Rideaux & Matelas",
-    description:
-      "Nettoyage et désinfection de vos rideaux et matelas sur place, sans démontage. Élimine poussière et saletés.",
-    image: "/images/services/card8.png",
-  },
-  // — Voitures last —
   {
     title: "Voitures",
     description:
-      "Nettoyage intérieur complet de votre véhicule : sièges, moquettes, tableau de bord et plafond. Élimine poussière et saletés.",
+      "Nettoyage intérieur complet de votre véhicule : sièges tissu ou cuir, moquettes, coffre, tableau de bord et plafond. Élimine poussière, saletés, taches et mauvaises odeurs.",
     image: "/images/services/card9.png",
   },
 ];
