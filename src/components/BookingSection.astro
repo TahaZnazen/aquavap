@@ -221,38 +221,24 @@ const whatsappUrl = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURICompon
 </section>
 
 <script>
-  const VAL_URL = "https://tahaznazen--1f69549c237511f1867442dde27851f2.web.val.run";
+  const WHATSAPP_NUMBER = "21622772171";
 
-  document.getElementById('devis-form')?.addEventListener('submit', async (e) => {
+  document.getElementById('devis-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
-    const btn = form.querySelector('button[type="submit"]') as HTMLButtonElement;
 
     const name    = (form.querySelector('#name') as HTMLInputElement).value.trim();
     const phone   = (form.querySelector('#phone') as HTMLInputElement).value.trim();
     const service = (form.querySelector('#service') as HTMLSelectElement).value;
     const message = (form.querySelector('#message') as HTMLTextAreaElement).value.trim();
 
-    btn.disabled = true;
-    btn.textContent = "Envoi en cours...";
+    let whatsappMsg = `Bonjour, je souhaite un devis.\n\n`;
+    whatsappMsg += `*Nom :* ${name}\n`;
+    whatsappMsg += `*Téléphone :* ${phone}\n`;
+    if (service) whatsappMsg += `*Service :* ${service}\n`;
+    if (message) whatsappMsg += `*Message :* ${message}\n`;
 
-    try {
-      const res = await fetch(VAL_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, service, message }),
-      });
-
-      if (res.ok) {
-        btn.textContent = "✅ Demande envoyée !";
-        btn.classList.replace("bg-primary", "bg-green-500");
-        form.reset();
-      } else {
-        throw new Error("Erreur serveur");
-      }
-    } catch {
-      btn.textContent = "❌ Erreur, réessayez";
-      btn.disabled = false;
-    }
+    const whatsappLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMsg)}`;
+    window.open(whatsappLink, "_blank");
   });
 </script>
