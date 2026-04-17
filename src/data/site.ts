@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Aquavap",
   tagline: "Nettoyage & Désinfection Professionnelle à la Vapeur",
   description:
-    "Aquavap — Service professionnel de nettoyage et désinfection à la vapeur à domicile en Tunisie. Canapés, voitures, tapis, rideaux, hôtels et plus.",
+    "Aquavap — Service professionnel de nettoyage et désinfection à la vapeur à domicile en Tunisie. Canapés, rideaux, moquette, matelas, tapis, intérieur voiture, marbre et plus.",
   phone: "+216 22 772 171",
   phoneRaw: "+21622772171",
   whatsapp: "21622772171",

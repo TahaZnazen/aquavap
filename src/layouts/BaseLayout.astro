@@ -13,6 +13,55 @@ const fullTitle =
   title === siteConfig.name
     ? `${siteConfig.name} — ${siteConfig.tagline}`
     : `${title} | ${siteConfig.name}`;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: siteConfig.url,
+  telephone: siteConfig.phone,
+  email: siteConfig.email,
+  image: `${siteConfig.url}/images/logo.png`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Tunis",
+    addressCountry: "TN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 36.8065,
+    longitude: 10.1815,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "08:00",
+    closes: "18:00",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Tunisie",
+  },
+  priceRange: "$$",
+  sameAs: [
+    siteConfig.socials.facebook,
+    siteConfig.socials.instagram,
+    siteConfig.socials.tiktok,
+  ],
+  serviceType: [
+    "Nettoyage à la vapeur",
+    "Nettoyage canapé",
+    "Nettoyage tapis",
+    "Nettoyage moquette",
+    "Nettoyage matelas",
+    "Nettoyage rideaux",
+    "Nettoyage intérieur voiture",
+    "Nettoyage marbre",
+    "Désinfection à la vapeur",
+  ],
+};
 ---
 
 <!doctype html>
@@ -21,17 +70,35 @@ const fullTitle =
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="nettoyage vapeur, nettoyage à domicile, nettoyage canapé Tunisie, nettoyage tapis Tunis, nettoyage moquette, nettoyage matelas, nettoyage rideaux, nettoyage voiture intérieur, nettoyage marbre, désinfection vapeur, aquavap, nettoyage professionnel Tunisie, nettoyage écologique" />
+    <meta name="author" content={siteConfig.name} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={canonicalURL} />
     <meta name="theme-color" content="#0891B2" />
+    <meta name="geo.region" content="TN" />
+    <meta name="geo.placename" content="Tunis" />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={siteConfig.name} />
-    <meta property="og:url" content={siteConfig.url} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={`${siteConfig.url}/images/logo.png`} />
+    <meta property="og:locale" content="fr_TN" />
 
-    <title>{fullTitle}</title>
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteConfig.url}/images/logo.png`} />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   </head>
   <body class="bg-background text-text-primary antialiased">
     <slot />
