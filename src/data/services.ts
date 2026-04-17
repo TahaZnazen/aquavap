@@ -24,6 +24,12 @@ export const services: Service[] = [
     image: "/images/services/card7.png",
   },
   {
+    title: "Nettoyage marbre",
+    description:
+      "Ponçage, lustrage, cristallisation — redonner à votre marbre son éclat d'origine. Traitement professionnel pour sols, escaliers et plans de travail en marbre.",
+    image: "/images/services/card10.png",
+  },
+  {
     title: "Entreprise & Bureaux",
     description:
       "Nettoyage professionnel pour bureaux, open spaces, salles de réunion, hôtels et espaces commerciaux : sièges, chaises, moquettes, cloisons et sols. Élimine poussière et saletés. Interventions rapides, sans perturbation de votre activité.",
